@@ -5,13 +5,21 @@ object Part2ConditionalLogic {
     // Create a function that takes an integer as a parameter and returns "Positive", "Negative", or "Zero".
     fun checkNumber(number: Int): String {
         // Your code here
-        return ""
+        if (number > 0) {
+            return "Positive"
+        }   else if (number == 0){
+            return "Zero"
+        }   else return "Negative"
     }
 
     // ---------------------- EXERCISE 2
     // Create a function that takes a string and prints each character on a new line.
     fun printChars(input: String) {
         // Your code here
+        val splitString = input.split("")
+        for (char in splitString) {
+            println(char)
+        }
     }
 
     // ---------------------- EXERCISE 3
@@ -19,7 +27,9 @@ object Part2ConditionalLogic {
     // For example if input is 45 then output should be 9 (4+5)
     fun sumDigits(number: Int): Int {
         // Your code here
-        return 0
+        //Fra stackOverflow
+        val splitNumber = number.toString().map { it.toString().toInt() }
+        return splitNumber.sum()
     }
 
     // ---------------------- EXERCISE 4
@@ -27,14 +37,20 @@ object Part2ConditionalLogic {
     // For example if input is (1,2,3,4,5) then output should be (1,3,5)
     fun filterOddNumbers(numbers: List<Int>): List<Int> {
         // Your code here
-        return listOf()
+        val newList:MutableList<Int> = mutableListOf()
+        for (number in numbers){
+            if (number %2 ==1){
+                newList.add(number)
+            }
+        }
+        return newList
     }
 
     // ---------------------- EXERCISE 5
     // Create a function that takes a list of strings and returns a new list with all strings in lowercase.
     fun transformToLowercase(strings: List<String>): List<String> {
         // Your code here
-        return listOf()
+        return strings.map { it.lowercase() }
     }
 
     // ---------------------- EXERCISE 6
@@ -42,6 +58,11 @@ object Part2ConditionalLogic {
     // Expected output: "1", "2", "4", "5", "7", "8", "10"
     fun printNumbersSkipMultiplesOf3() {
         // Your code here
+        for (i in 1..10){
+            if (i % 3!= 0){
+                println(i)
+            }
+        }
     }
 
     // ---------------------- EXERCISE 7
@@ -50,6 +71,7 @@ object Part2ConditionalLogic {
     // White spaces should be ignored.
     fun isPalindrome(input: String): Boolean {
         // Your code here
+
         return false
     }
 
@@ -58,6 +80,7 @@ object Part2ConditionalLogic {
     // Example of a function with a default value "world": fun greet(name: String = "world") {}
     fun calculateArea(width: Int, height: Int): Int {
         // Your code here
+        //Forstår ikke den her
         return 0
     }
 
@@ -67,7 +90,17 @@ object Part2ConditionalLogic {
     // Acceptable days: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
     // If the day does not exist, return "Invalid day".
     fun dayType(day: String): String {
-        return ""
+        val toLower = day.lowercase()
+        return when (toLower) {
+            "monday" -> ("Weekday")
+            "tuesday" -> ("Weekday")
+            "wednesday" -> ("Weekday")
+            "thursday" -> ("Weekday")
+            "friday" -> ("Weekday")
+            "saturday" -> ("Weekend")
+            "sunday" -> ("Weekend")
+            else -> {"Invalid day"}
+        }
     }
 
     // ---------------------- EXERCISE 10
@@ -77,7 +110,12 @@ object Part2ConditionalLogic {
     //      If dividing the year by 100 result in a whole number, it must also result in a whole number when dividing by 400
     // Examples: 2024 is a leap year, and 2023 is not
     fun isLeapYear(year: Int): Boolean {
-        return false
+        return when {
+            year % 400 == 0 -> true
+            year % 100 == 0 -> false
+            year % 4 == 0 -> true
+            else -> false
+        }
     }
 
     // ---------------------- EXERCISE 11
